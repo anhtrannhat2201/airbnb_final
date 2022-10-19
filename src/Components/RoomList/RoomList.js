@@ -54,13 +54,13 @@ export default function RoomList() {
                 modules={[Pagination, Navigation]}
                 className="roomSwiper relative"
               >
-                <SwiperSlide className="w-full">
+                <SwiperSlide className="w-full object-cover">
                   <img src={room.hinhAnh} alt={room.hinhAnh} />
                 </SwiperSlide>
-                <SwiperSlide className="w-full">
+                <SwiperSlide className="w-full object-cover">
                   <img src={room.hinhAnh} alt={room.hinhAnh} />
                 </SwiperSlide>
-                <SwiperSlide className="w-full">
+                <SwiperSlide className="w-full object-cover">
                   <img src={room.hinhAnh} alt={room.hinhAnh} />
                 </SwiperSlide>
                 <button className="absolute top-3 right-3 z-30">
@@ -86,7 +86,7 @@ export default function RoomList() {
               </Swiper>
               <div>
                 <p className="flex justify-between mt-2">
-                  <span className="font-bold">{room.tenPhong}</span>
+                  <span className="font-bold truncate ">{room.tenPhong}</span>
                   <span>
                     <i className="fa fa-star"></i>{" "}
                     {createRandomStar(1, 10).toFixed(2)}

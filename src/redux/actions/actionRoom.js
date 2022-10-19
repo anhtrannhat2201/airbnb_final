@@ -21,21 +21,21 @@ export const getListRoomAction = () => {
     }
   };
 };
-export const getRoomDetailAction = (roomId = "") => {
+export const getRoomDetailAction = (roomId) => {
   return async (dispatch) => {
     try {
       dispatch(setLoadingOnAction());
 
-      const result = await roomAPI.getRoomDetail();
+      const result = await roomAPI.getRoomDetail(roomId);
       console.log("result: ", result);
 
       dispatch({
         type: "ROOM_DETAIL",
-        listRoom: result.data.content,
+        roomDetail: result.data.content,
       });
       dispatch(setLoadingOffAction());
     } catch (err) {
-      message.error(err.response?.data);
+      console.log(err.response?.data);
       dispatch(setLoadingOffAction());
     }
   };

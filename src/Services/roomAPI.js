@@ -5,7 +5,8 @@ export const roomAPI = {
     let uri = `/api/phong-thue`;
     return https.get(uri);
   },
-  getRoomDetail: (roomId = "") => {
+  getRoomDetail: (roomId) => {
     let uri = `/api/phong-thue/${roomId}`;
+    return https.get(uri);
   },
 };
