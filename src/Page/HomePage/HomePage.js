@@ -1,5 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import RoomList from "../../Components/RoomList/RoomList";
+import { TabTitle } from "../../Utils/generalFunction";
 
-export default function HomePage() {
-  return <div>HomePage</div>;
+function HomePage() {
+  TabTitle("Nhà nghỉ dưỡng & Căn hộ cao cấp cho thuê - Airbnb");
+
+  return (
+    <>
+      <RoomList />
+    </>
+  );
 }
+export default HomePage;
