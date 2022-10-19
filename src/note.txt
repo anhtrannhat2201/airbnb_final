@@ -1,0 +1,21 @@
+task manager
+https://docs.google.com/spreadsheets/d/1l5w-hcZHwn8SN6vXiRWn5F5f3pKl-z-27EwLo1MZfKQ/edit#gid=0
+Sử dụng thư viện
+"animate.css": 
+    "antd": 
+    "axios": 
+    "lodash": 
+    "moment":
+    "react":
+    "react-dom": 
+    "react-glassmorphism": "
+    "react-loading": 
+    "react-redux": 
+    "react-responsive": 
+    "react-router-dom": 
+    "react-scripts": 
+    "react-slick": 
+    "react-spinners": 
+    "redux":
+    "redux-thunk": 
+    "sass-loader": 
