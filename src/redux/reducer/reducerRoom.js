@@ -8,6 +8,9 @@ export const roomReducer = (state = initalState, action) => {
     case "LIST_ROOM":
       state.listRoom = action.listRoom;
       return { ...state };
+    case "ROOM_DETAIL":
+      state.roomDetail = action.roomDetail;
+      return { ...state };
     default:
       return { ...state };
   }
