@@ -1,6 +1,7 @@
 import axios from "axios";
 import { store } from "../index";
 import { setLoadingOnAction } from "../redux/actions/actionSpinner";
+import { localServ } from "./localServices";
 
 export const BASE_URL = "https://airbnbnew.cybersoft.edu.vn";
 export const TOKEN_CYBERSOFT =
@@ -10,6 +11,8 @@ export let https = axios.create({
   baseURL: BASE_URL,
   headers: {
     tokenCybersoft: TOKEN_CYBERSOFT,
+    // lấy token từ local storage khi user đăng nhập
+    // token: localServ.user.get().token,
   },
 });
 

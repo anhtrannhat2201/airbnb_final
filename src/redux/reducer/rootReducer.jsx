@@ -1,4 +1,13 @@
 import { combineReducers } from "redux";
 import { roomReducer } from "./reducerRoom";
+import { locationReducer } from "./reducerLocation";
 import { spinnerReducer } from "./reducerSpinner";
-export let rootReducer = combineReducers({ spinnerReducer, roomReducer });
+import { userReducer } from "./reducerUser";
+import { reviewReducer } from "./reducerReview";
+export let rootReducer = combineReducers({
+  spinnerReducer,
+  roomReducer,
+  userReducer,
+  // locationReducer,
+  reviewReducer,
+});

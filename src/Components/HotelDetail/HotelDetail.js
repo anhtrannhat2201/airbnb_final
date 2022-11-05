@@ -1,14 +1,27 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import FormGetBooking from "../FormGetBooking/FormGetBooking";
 import Review from "../Review/Review";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import { LocalParking, SoupKitchen } from "@mui/icons-material";
-function HotelDetail() {
-  const { roomDetail } = useSelector((state) => state.roomReducer);
+import React, { useEffect } from "react";
+import {
+  getListRoomAction,
+  getListRoomByLocation,
+  getLocationIdAction,
+  getRoomDetailAction,
+} from "../../redux/actions/actionRoom";
+import { useParams } from "react-router-dom";
 
+function HotelDetail() {
+  const { roomDetail, locationId } = useSelector((state) => state.roomReducer);
+  console.log("locationId: ", locationId);
+  const dispatch = useDispatch();
   const createRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
   };
+  useEffect(() => {
+    dispatch(getLocationIdAction(roomDetail?.maViTri));
+  }, []);
 
   return (
     <div>
@@ -33,15 +46,18 @@ function HotelDetail() {
               </svg>
             </button>
             <span className="font-semibold text-xl sm:text-3xl tracking-widest leading-relaxed text-gray-900">
-              {roomDetail?.tenPhong}
+              {roomDetail.tenPhong}
+            </span>
+            <span className="font-semibold text-xl sm:text-3xl tracking-widest leading-relaxed text-gray-900">
+              Mã vị trí:{roomDetail.maViTri}
             </span>
           </p>
           <div className="flex flex-wrap justify-between items-center">
             <div>
               <span className="text-sm font-normal tracking-widest">
                 <i className="fa fa-star"></i>{" "}
-                {roomDetail?.maViTri
-                  ? roomDetail?.maViTri / 2
+                {roomDetail.danhGia
+                  ? roomDetail.danhGia / 2
                   : createRandomNumber(1, 5)}{" "}
                 .
               </span>{" "}
@@ -54,9 +70,8 @@ function HotelDetail() {
                 <i className="fa-solid fa-award" /> Chủ nhà siêu cấp .
               </span>
               <span className="underline text-sm font-normal tracking-widest mx-1">
-                {roomDetail?.maViTri ? roomDetail?.maViTri.tenPhong : ""},{" "}
-                {roomDetail?.maViTri ? roomDetail?.maViTri.tenPhong : ""},{" "}
-                {roomDetail?.maViTri ? roomDetail?.maViTri.tenPhong : ""}
+                {locationId.tenViTri},{locationId.tinhThanh},
+                {locationId.quocGia}
               </span>
             </div>
             <div className="flex flex-wrap justify-center items-center">
@@ -312,16 +327,9 @@ function HotelDetail() {
               </div>
 
               <p className="text-base tracking-wider text-gray-800 mb-4">
-                Nhà nghỉ thôn dã hình lưỡi liềm trong một ngôi làng nghệ thuật
-                gốm hai nghìn năm. Một ngôi nhà nguyên khối lớn với sân thượng
-                ba tầng của Bảo tàng Văn hóa Guitar Serra, nổi tiếng với mặt
-                tiền đặc sắc trong một ngôi làng nghệ thuật gốm hai nghìn năm
-                pha trộn rất tốt với thiên nhiên.
+                {roomDetail?.moTa}
               </p>
-              <p className="text-base tracking-wider text-gray-800 mb-4">
-                Tận hưởng kỳ nghỉ dưỡng sức cảm xúc thư giãn trong một căn phòng
-                ấm cúng, chào...
-              </p>
+
               <button className="underline font-semibold text-base tracking-wider text-gray-800">
                 Hiển thị thêm
                 <span className="ml-1">

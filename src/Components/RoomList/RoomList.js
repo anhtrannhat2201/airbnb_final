@@ -21,6 +21,7 @@ import { NavLink, useParams } from "react-router-dom";
 
 export default function RoomList() {
   const { listRoom } = useSelector((state) => state.roomReducer);
+
   // const {id}=useParams
 
   const dispatch = useDispatch();
