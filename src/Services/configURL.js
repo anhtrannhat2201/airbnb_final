@@ -12,7 +12,7 @@ export let https = axios.create({
   headers: {
     tokenCybersoft: TOKEN_CYBERSOFT,
     // lấy token từ local storage khi user đăng nhập
-    // token: localServ.user.get().token,
+    token: localServ?.user.get().token,
   },
 });
 

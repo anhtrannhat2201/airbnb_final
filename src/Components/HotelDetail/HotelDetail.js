@@ -4,17 +4,10 @@ import Review from "../Review/Review";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import { LocalParking, SoupKitchen } from "@mui/icons-material";
 import React, { useEffect } from "react";
-import {
-  getListRoomAction,
-  getListRoomByLocation,
-  getLocationIdAction,
-  getRoomDetailAction,
-} from "../../redux/actions/actionRoom";
-import { useParams } from "react-router-dom";
+import { getLocationIdAction } from "../../redux/actions/actionRoom";
 
 function HotelDetail() {
   const { roomDetail, locationId } = useSelector((state) => state.roomReducer);
-  console.log("locationId: ", locationId);
   const dispatch = useDispatch();
   const createRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -47,9 +40,6 @@ function HotelDetail() {
             </button>
             <span className="font-semibold text-xl sm:text-3xl tracking-widest leading-relaxed text-gray-900">
               {roomDetail.tenPhong}
-            </span>
-            <span className="font-semibold text-xl sm:text-3xl tracking-widest leading-relaxed text-gray-900">
-              Mã vị trí:{roomDetail.maViTri}
             </span>
           </p>
           <div className="flex flex-wrap justify-between items-center">
@@ -618,12 +608,13 @@ function HotelDetail() {
           </div>
           <div className="w-full sm:w-1/2 lg:w-2/5">
             <div className="sticky top-28">
+              {/* Page FormGetBooking */}
               <FormGetBooking />
             </div>
           </div>
         </div>
 
-        {/* đánh giá */}
+        {/* Page Review */}
         <Review />
       </div>
     </div>

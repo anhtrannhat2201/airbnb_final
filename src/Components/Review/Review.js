@@ -17,18 +17,17 @@ function Review() {
   const { roomDetail } = useSelector((state) => state.roomReducer);
   const { userInfor } = useSelector((state) => state.userReducer);
 
-  console.log("userInfor: ", userInfor);
   const [componentSize, setComponentSize] = useState("default");
 
   const { listReview } = useSelector((state) => state.reviewReducer);
-  console.log("listReview: ", listReview);
+
   const { id } = useParams();
-  console.log("id: ", id);
+
   const createRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
   };
-  // const today = new Date();
-  // let getToday=moment(today)
+  const today = new Date();
+  let getToday = moment(today).format("DD-MM-YYYY");
 
   // console.log(roomDetail?._id);
   // console.log(listReview);
@@ -39,13 +38,12 @@ function Review() {
   // useEffect(() => {
   //   // dispatch(getReviewAction(id));
   // }, []);
-  let today = new Date();
 
   const formik = useFormik({
     initialValues: {
-      maPhong: "",
-      maNguoiBinhLuan: "",
-      ngayBinhLuan: "",
+      maPhong: id,
+      maNguoiBinhLuan: userInfor?.user.id,
+      ngayBinhLuan: getToday,
     },
     onSubmit: (values) => {
       // tạo đối tượng form data => đưa giá trị values từ formik vào form data
@@ -182,11 +180,11 @@ function Review() {
       </div>
 
       {/* review */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-20 gap-y-4 sm:w-4/5 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-20 gap-y-4 sm:w-4/5 mt-5 ">
         {listReview?.map((review, index) => {
           if (index < 8) {
             return (
-              <div key={index} className="mb-5">
+              <div key={index} className="mb-5 ">
                 <div className="flex items-center">
                   <div>
                     {review?.avatar ? (
@@ -231,12 +229,13 @@ function Review() {
             );
           }
         })}
-        <div className="sm:col-span-2">
+        <div className="sm:col-span-2 mb-4 ">
           <button className="border border-solid border-gray-900 hover:bg-gray-100 transition-all duration-200 rounded-md px-5 py-3 font-semibold text-base text-gray-800 tracking-wider">
             Hiển thị tất cả 120 đánh giá
           </button>
         </div>
       </div>
+      <div className="w-full border"></div>
       <Form
         onSubmitCapture={formik.handleSubmit}
         labelCol={{
@@ -252,21 +251,53 @@ function Review() {
         onValuesChange={onFormLayoutChange}
         size={componentSize}
       >
+        <p className="text-xl">
+          <span>
+            <svg
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+              style={{
+                display: "inline-block",
+                height: 16,
+                width: 16,
+                fill: "currentcolor",
+              }}
+            >
+              <path
+                d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+                fillRule="evenodd"
+              />
+            </svg>
+          </span>{" "}
+          Bình luận
+        </p>
         <input
-          className="w-1/2 h-32 border border-black"
+          className="w-60 h-20 border rounded border-black"
           id="noiDung"
           type="text"
           onChange={formik.handleChange}
         />
-        <div>
+        <div className="mt-5">
           <button
             type="submit"
-            className="px-5 py-6 bg-blue-400 text-black rounded "
+            className="px-2 py-3 bg-blue-500 text-white  hover:bg-blue-400 transition-all duration-200 rounded-md"
           >
             Bình luận
           </button>
         </div>
       </Form>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }
