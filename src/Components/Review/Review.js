@@ -10,8 +10,6 @@ import {
   getReviewAction,
   postReviewAction,
 } from "../../redux/actions/actionReview";
-import { localServ } from "../../Services/localServices";
-// import { getReviewByRoomId } from "Slices/review";
 
 function Review() {
   const { roomDetail } = useSelector((state) => state.roomReducer);
@@ -36,7 +34,7 @@ function Review() {
   // };
   const dispatch = useDispatch();
   // useEffect(() => {
-  //   // dispatch(getReviewAction(id));
+  //   dispatch(getReviewAction(id));
   // }, []);
 
   const formik = useFormik({
@@ -44,6 +42,7 @@ function Review() {
       maPhong: id,
       maNguoiBinhLuan: userInfor?.user.id,
       ngayBinhLuan: getToday,
+      saoBinhluan: 5,
     },
     onSubmit: (values) => {
       // tạo đối tượng form data => đưa giá trị values từ formik vào form data
@@ -51,8 +50,10 @@ function Review() {
       for (let key in values) {
         formData.append(key, values[key]);
       }
-      console.log("values: ", values);
-
+      if (values === "") {
+        <p>Bình luận không được để trống</p>;
+      } else {
+      }
       dispatch(postReviewAction(values));
     },
   });
@@ -239,10 +240,10 @@ function Review() {
       <Form
         onSubmitCapture={formik.handleSubmit}
         labelCol={{
-          span: 4,
+          span: 8,
         }}
         wrapperCol={{
-          span: 14,
+          span: 16,
         }}
         layout="horizontal"
         initialValues={{
@@ -274,12 +275,27 @@ function Review() {
           </span>{" "}
           Bình luận
         </p>
-        <input
-          className="w-60 h-20 border rounded border-black"
-          id="noiDung"
-          type="text"
-          onChange={formik.handleChange}
-        />
+        <Form.Item
+          name="review"
+          rules={[
+            {
+              required: true,
+              message: (
+                <span className="text-red-400">
+                  Please input your Password!
+                </span>
+              ),
+            },
+          ]}
+        >
+          <input
+            className="w-60 h-20 border rounded border-black"
+            id="noiDung"
+            type="review"
+            onChange={formik.handleChange}
+          />
+        </Form.Item>
+
         <div className="mt-5">
           <button
             type="submit"

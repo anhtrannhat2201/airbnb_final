@@ -4,12 +4,11 @@ import { useParams } from "react-router-dom";
 import HotelDetail from "../../Components/HotelDetail/HotelDetail";
 
 import { getRoomDetailAction } from "../../redux/actions/actionRoom";
+
 import { TabTitle } from "../../Utils/generalFunction";
 
 export default function RoomDetail() {
   const { roomDetail } = useSelector((state) => state.roomReducer);
-
-  console.log("roomDetail: ", roomDetail);
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -22,8 +21,8 @@ export default function RoomDetail() {
   );
 
   return (
-    <div>
+    <>
       <HotelDetail />
-    </div>
+    </>
   );
 }

@@ -23,21 +23,21 @@ export const getListRoomAction = (ID) => {
     }
   };
 };
-export const getLocationIdAction = (maViTri) => {
-  return async (dispatch) => {
-    try {
-      const resultLocation = await locationSrv.getLocationId(maViTri);
-      console.log("result: ", resultLocation);
+// export const getLocationIdAction = (maViTri) => {
+//   return async (dispatch) => {
+//     try {
+//       const resultLocation = await locationSrv.getLocationId(maViTri);
+//       console.log("result: ", resultLocation);
 
-      dispatch({
-        type: "LOCATION_ID",
-        locationId: resultLocation.data.content,
-      });
-    } catch (err) {
-      console.log(err.response?.data);
-    }
-  };
-};
+//       dispatch({
+//         type: "LOCATION_ID",
+//         locationId: resultLocation.data.content,
+//       });
+//     } catch (err) {
+//       console.log(err.response?.data);
+//     }
+//   };
+// };
 export const getRoomDetailAction = (roomId) => {
   return async (dispatch) => {
     try {
@@ -75,24 +75,24 @@ export const getDatPhongAction = () => {
     }
   };
 };
-// export const getDatPhongIDAction = (id) => {
-//   return async (dispatch) => {
-//     try {
-//       dispatch(setLoadingOnAction());
+export const getDatPhongIDAction = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch(setLoadingOnAction());
 
-//       const result = await roomAPI.getDatPhongId(id);
-//       console.log("datphongID: ", result);
-//       dispatch({
-//         type: "GET_DAT_PHONG_ID",
-//         danhSachPhongDat: result.data.content,
-//       });
-//       dispatch(setLoadingOffAction());
-//     } catch (err) {
-//       console.log(err.response?.data);
-//       dispatch(setLoadingOffAction());
-//     }
-//   };
-// };
+      const result = await roomAPI.getDatPhongId(id);
+      console.log("getDatPhong: ", result);
+      dispatch({
+        type: "GET_DAT_PHONG_ID",
+        danhSachPhongDat: result.data.content,
+      });
+      dispatch(setLoadingOffAction());
+    } catch (err) {
+      console.log(err.response?.data);
+      dispatch(setLoadingOffAction());
+    }
+  };
+};
 export const postDatPhongAction = (value) => {
   return async (dispatch) => {
     try {

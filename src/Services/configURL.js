@@ -12,16 +12,15 @@ export let https = axios.create({
   headers: {
     tokenCybersoft: TOKEN_CYBERSOFT,
     // lấy token từ local storage khi user đăng nhập
-    token: localServ?.user.get().token,
+    token: localServ.user.get()?.token,
   },
 });
 
 // Add a request interceptor
 https.interceptors.request.use(
   function (config) {
-    console.log("config", config);
     store.dispatch(setLoadingOnAction());
-    console.log("yes request");
+
     // Do something before request is sent
     return config;
   },

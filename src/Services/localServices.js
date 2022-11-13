@@ -2,7 +2,7 @@
 
 export const USER = "USER";
 // user thì có lưu dữ liệu xuống localStorage dùng Set
-
+export const LOCATION_ID = "LOCATION_ID";
 export const localServ = {
   user: {
     set: (data) => {
@@ -31,6 +31,30 @@ export const localServ = {
     },
     remove: () => {
       localStorage.removeItem(USER);
+    },
+  },
+};
+export const locationServ = {
+  location: {
+    set: (data) => {
+      let jsonData = JSON.stringify(data);
+      localStorage.setItem(LOCATION_ID, jsonData);
+    },
+    get: () => {
+      // Lấy lên jsonData
+      let jsonData = localStorage.getItem(LOCATION_ID);
+
+      // nếu có giữ liệu nó sẽ là {} \\ []
+      // nếu không có nó là undefile or null
+
+      if (jsonData) {
+        // có giữa liệu thì trả về parse , parse là trả về từ JSON thành
+        // {} \\ []
+        return JSON.parse(jsonData);
+      } else {
+        // false thì trả về null
+        return null;
+      }
     },
   },
 };

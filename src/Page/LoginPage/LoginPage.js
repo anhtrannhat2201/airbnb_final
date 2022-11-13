@@ -9,13 +9,9 @@ import logo_login from "../../assets/logo_login.jpg";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { TabTitle } from "../../Utils/generalFunction";
 import { setUserLoginAction } from "../../redux/actions/actionUser";
-import { authAPI } from "../../Services/userServices";
-import {
-  setLoadingOffAction,
-  setLoadingOnAction,
-} from "../../redux/actions/actionSpinner";
+
 const LoginPage = () => {
-  TabTitle("Đăng nhập");
+  TabTitle("AirBnb-Đăng nhập");
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -36,7 +32,7 @@ const LoginPage = () => {
     let onSuccess = () => {
       alert("Đăng nhập thành công");
       setTimeout(() => {
-        navigate("/");
+        navigate(-1);
       }, 1000);
     };
     let onFail = () => {

@@ -69,7 +69,7 @@ export default function FormGetBooking() {
   // Handle submit button Đặt phòng
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    // data submit
     const data = {
       maNguoiDung: userInfor?.user.id,
       maPhong: roomDetail?.id,
@@ -88,19 +88,18 @@ export default function FormGetBooking() {
         cancelButtonColor: "#d33",
       }).then((result) => {
         if (result.isConfirmed) {
-          dispatch(postDatPhongAction(data))
-            .unwrap()
-            .then((result) => {
-              if (result.userInfor) {
-                Swal.fire({
-                  title: "Đặt phòng thành công",
-                });
-              } else {
-                Swal.fire({
-                  title: "Đặt phòng thất bại",
-                });
-              }
-            });
+          dispatch(postDatPhongAction(data));
+          setTimeout(() => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Đặt phòng thành công",
+              });
+            } else {
+              Swal.fire({
+                title: "Đặt phòng thất bại",
+              });
+            }
+          }, 1000);
         }
       });
     } else {
@@ -117,10 +116,6 @@ export default function FormGetBooking() {
         }
       });
     }
-  };
-
-  const renderFormDatPhong = () => {
-    <h5>teST</h5>;
   };
 
   return (

@@ -3,22 +3,41 @@ import FormGetBooking from "../FormGetBooking/FormGetBooking";
 import Review from "../Review/Review";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import { LocalParking, SoupKitchen } from "@mui/icons-material";
-import React, { useEffect } from "react";
-import { getLocationIdAction } from "../../redux/actions/actionRoom";
+import React, { useEffect, useState } from "react";
+import { locationSrv } from "../../Services/locationServices";
+import { useParams } from "react-router-dom";
+import { getRoomDetailAction } from "../../redux/actions/actionRoom";
 
 function HotelDetail() {
-  const { roomDetail, locationId } = useSelector((state) => state.roomReducer);
+  const { roomDetail } = useSelector((state) => state.roomReducer);
+  console.log("roomDetail: ", roomDetail);
+  const [location, setLocation] = useState({});
+  console.log("location: ", location.tenViTri);
   const dispatch = useDispatch();
+  const { id } = useParams();
   const createRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
   };
   useEffect(() => {
-    dispatch(getLocationIdAction(roomDetail?.maViTri));
+    dispatch(getRoomDetailAction(id));
+    let fetchdata = async () => {
+      try {
+        const result = await locationSrv.getLocationId(roomDetail.maViTri);
+
+        setLocation({
+          ...location,
+          location: result.data.content,
+        });
+      } catch (error) {
+        console.log(error.response?.data);
+      }
+    };
+    fetchdata();
   }, []);
 
   return (
     <div>
-      <div className="container mx-auto px-20 mt-44">
+      <div className="container mx-auto px-20 mt-10">
         <div>
           <p>
             <button className="mr-3">
@@ -59,9 +78,13 @@ function HotelDetail() {
                 {" "}
                 <i className="fa-solid fa-award" /> Chủ nhà siêu cấp .
               </span>
+              <span className="text-sm font-normal tracking-widest mx-1">
+                {" "}
+                <i className="fa-solid fa-award" /> Mã vị trí{" "}
+                {roomDetail.maViTri}
+              </span>
               <span className="underline text-sm font-normal tracking-widest mx-1">
-                {locationId.tenViTri},{locationId.tinhThanh},
-                {locationId.quocGia}
+                {location.tenViTri},{location.tinhThanh},{location.quocGia}
               </span>
             </div>
             <div className="flex flex-wrap justify-center items-center">

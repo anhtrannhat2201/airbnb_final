@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Filter from "../../Components/Filter/Filter";
 
 import RoomList from "../../Components/RoomList/RoomList";
 import { TabTitle } from "../../Utils/generalFunction";
@@ -8,6 +9,7 @@ function HomePage() {
 
   return (
     <>
+      <Filter />
       <RoomList />
     </>
   );

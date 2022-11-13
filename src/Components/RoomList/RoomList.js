@@ -22,8 +22,6 @@ import { NavLink, useParams } from "react-router-dom";
 export default function RoomList() {
   const { listRoom } = useSelector((state) => state.roomReducer);
 
-  // const {id}=useParams
-
   const dispatch = useDispatch();
   const createRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -31,14 +29,14 @@ export default function RoomList() {
   const createRandomStar = (min, max) => {
     return Math.floor(Math.random() * (max - min) * 100) / 100 + min;
   };
-  // let id = useParams();
+
   useEffect(() => {
     dispatch(getListRoomAction());
   }, []);
 
   return (
     <div className="container mx-auto mt-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-10">
+      <div className="grid grid-cols-6 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-10">
         {listRoom.map((room) => {
           return (
             <NavLink
