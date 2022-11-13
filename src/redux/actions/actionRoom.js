@@ -23,32 +23,26 @@ export const getListRoomAction = (ID) => {
     }
   };
 };
-// export const getLocationIdAction = (maViTri) => {
-//   return async (dispatch) => {
-//     try {
-//       const resultLocation = await locationSrv.getLocationId(maViTri);
-//       console.log("result: ", resultLocation);
-
-//       dispatch({
-//         type: "LOCATION_ID",
-//         locationId: resultLocation.data.content,
-//       });
-//     } catch (err) {
-//       console.log(err.response?.data);
-//     }
-//   };
-// };
 export const getRoomDetailAction = (roomId) => {
   return async (dispatch) => {
     try {
       dispatch(setLoadingOnAction());
 
-      const result = await roomAPI.getRoomDetail(roomId);
-      console.log("result: ", result);
+      const roomDetail = await roomAPI.getRoomDetail(roomId);
+      console.log("roomDetail: ", roomDetail);
+      const addressDetail = await locationSrv.getLocationId(
+        roomDetail.data.content.maViTri
+      );
+      console.log("addressDetail: ", addressDetail);
 
+      let newRoomDetail = {
+        ...roomDetail.data.content,
+        addressDetail: { ...addressDetail.data.content },
+      };
+      console.log("newRoomDetail: ", newRoomDetail);
       dispatch({
-        type: "ROOM_DETAIL",
-        roomDetail: result.data.content,
+        type: "ROOM_DETAIL_ADDRESS",
+        roomDetailAddress: newRoomDetail,
       });
       dispatch(setLoadingOffAction());
     } catch (err) {

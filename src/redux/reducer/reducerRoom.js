@@ -2,6 +2,7 @@ import { ThongTinPhong } from "../../_core/models/Rooms";
 
 let initalState = {
   roomDetail: new ThongTinPhong(),
+  roomDetailAddress: {},
   listRoom: [],
   arrDatPhong: {},
   locationId: {},
@@ -18,6 +19,9 @@ export const roomReducer = (state = initalState, action) => {
       return { ...state };
     case "ROOM_DETAIL":
       state.roomDetail = action.roomDetail;
+      return { ...state };
+    case "ROOM_DETAIL_ADDRESS":
+      state.roomDetailAddress = action.roomDetailAddress;
       return { ...state };
     case "LOCATION_ID":
       state.locationId = action.locationId;

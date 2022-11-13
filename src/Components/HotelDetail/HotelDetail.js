@@ -4,35 +4,29 @@ import Review from "../Review/Review";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import { LocalParking, SoupKitchen } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-import { locationSrv } from "../../Services/locationServices";
+
 import { useParams } from "react-router-dom";
 import { getRoomDetailAction } from "../../redux/actions/actionRoom";
+import { TabTitle } from "../../Utils/generalFunction";
 
 function HotelDetail() {
-  const { roomDetail } = useSelector((state) => state.roomReducer);
-  console.log("roomDetail: ", roomDetail);
-  const [location, setLocation] = useState({});
-  console.log("location: ", location.tenViTri);
+  const { roomDetail, roomDetailAddress } = useSelector(
+    (state) => state.roomReducer
+  );
+  console.log("roomDetailAddress: ", roomDetailAddress);
+  TabTitle(
+    `Airbnb - Chi tiết phòng - ${
+      roomDetailAddress ? roomDetailAddress.tenPhong : ""
+    }`
+  );
   const dispatch = useDispatch();
+
   const { id } = useParams();
   const createRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
   };
   useEffect(() => {
     dispatch(getRoomDetailAction(id));
-    let fetchdata = async () => {
-      try {
-        const result = await locationSrv.getLocationId(roomDetail.maViTri);
-
-        setLocation({
-          ...location,
-          location: result.data.content,
-        });
-      } catch (error) {
-        console.log(error.response?.data);
-      }
-    };
-    fetchdata();
   }, []);
 
   return (
@@ -58,15 +52,15 @@ function HotelDetail() {
               </svg>
             </button>
             <span className="font-semibold text-xl sm:text-3xl tracking-widest leading-relaxed text-gray-900">
-              {roomDetail.tenPhong}
+              {roomDetailAddress?.tenPhong}
             </span>
           </p>
           <div className="flex flex-wrap justify-between items-center">
             <div>
               <span className="text-sm font-normal tracking-widest">
                 <i className="fa fa-star"></i>{" "}
-                {roomDetail.danhGia
-                  ? roomDetail.danhGia / 2
+                {roomDetailAddress.danhGia
+                  ? roomDetailAddress.danhGia / 2
                   : createRandomNumber(1, 5)}{" "}
                 .
               </span>{" "}
@@ -78,13 +72,10 @@ function HotelDetail() {
                 {" "}
                 <i className="fa-solid fa-award" /> Chủ nhà siêu cấp .
               </span>
-              <span className="text-sm font-normal tracking-widest mx-1">
-                {" "}
-                <i className="fa-solid fa-award" /> Mã vị trí{" "}
-                {roomDetail.maViTri}
-              </span>
               <span className="underline text-sm font-normal tracking-widest mx-1">
-                {location.tenViTri},{location.tinhThanh},{location.quocGia}
+                {roomDetailAddress.addressDetail?.tenViTri},
+                {roomDetailAddress.addressDetail?.tinhThanh},
+                {roomDetailAddress.addressDetail?.quocGia}
               </span>
             </div>
             <div className="flex flex-wrap justify-center items-center">
@@ -141,7 +132,7 @@ function HotelDetail() {
         <div className=" mt-5">
           <div className="w-full rounded-l-xl rounded-3xl sm:rounded-r-none overflow-hidden">
             <img
-              src={roomDetail?.hinhAnh}
+              src={roomDetailAddress?.hinhAnh}
               className="w-full object-contain rounded-l-xl rounded-r-xl overflow-hidden"
               alt=""
               style={{ imageRendering: "pixelated" }}
@@ -158,18 +149,18 @@ function HotelDetail() {
                   Toàn bộ căn hộ. Chủ nhà LeeMin Đồng Nai
                 </h1>
                 <span className="text-sm font-normal  tracking-widest text-gray-700">
-                  <span>{roomDetail?.khach} khách . </span>
+                  <span>{roomDetailAddress?.khach} khách . </span>
                   <span className=" mx-1">
-                    {roomDetail?.phongNgu} phòng ngủ .{" "}
+                    {roomDetailAddress?.phongNgu} phòng ngủ .{" "}
                   </span>
                   <span className=" mx-1">
-                    {roomDetail?.phongTam} phòng tắm .{" "}
+                    {roomDetailAddress?.phongTam} phòng tắm .{" "}
                   </span>
                 </span>
               </div>
               <div className="w-12 h-12  relative">
                 <img
-                  src={roomDetail?.hinhAnh}
+                  src={roomDetailAddress?.hinhAnh}
                   alt=""
                   className="w-full h-full rounded-full overflow-hidden"
                 />
@@ -340,7 +331,7 @@ function HotelDetail() {
               </div>
 
               <p className="text-base tracking-wider text-gray-800 mb-4">
-                {roomDetail?.moTa}
+                {roomDetailAddress?.moTa}
               </p>
 
               <button className="underline font-semibold text-base tracking-wider text-gray-800">
@@ -376,7 +367,7 @@ function HotelDetail() {
               </div>
               {/* // render convenients */}
               <div className="grid grid-cols-2">
-                {roomDetail?.kitchen ? (
+                {roomDetailAddress?.kitchen ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <svg
@@ -402,7 +393,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.wifi ? (
+                {roomDetailAddress?.wifi ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <svg
@@ -428,7 +419,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.banLa ? (
+                {roomDetailAddress?.banLa ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <svg
@@ -454,7 +445,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.tivi ? (
+                {roomDetailAddress?.tivi ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <svg
@@ -480,7 +471,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.mayGiat ? (
+                {roomDetailAddress?.mayGiat ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <svg
@@ -506,7 +497,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.mayGiat ? (
+                {roomDetailAddress?.mayGiat ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <svg
@@ -532,7 +523,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.dieuHoa ? (
+                {roomDetailAddress?.dieuHoa ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <AcUnitIcon />
@@ -544,7 +535,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.banUi ? (
+                {roomDetailAddress?.banUi ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <svg
@@ -570,7 +561,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.hoBoi ? (
+                {roomDetailAddress?.hoBoi ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <svg
@@ -596,7 +587,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.bep ? (
+                {roomDetailAddress?.bep ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <SoupKitchen />
@@ -608,7 +599,7 @@ function HotelDetail() {
                 ) : (
                   ""
                 )}
-                {roomDetail?.doXe ? (
+                {roomDetailAddress?.doXe ? (
                   <div className="flex items-center pb-4">
                     <div>
                       <LocalParking />

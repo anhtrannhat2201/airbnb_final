@@ -18,12 +18,13 @@ export class ThongTinPhong {
   banUi = "";
   maViTri = "";
   hinhAnh = "";
-  locationId = new LocationID();
 }
-export class LocationID {
-  id = "";
-  tenViTri = "";
-  tinhThanh = "";
-  quocGia = "";
-  hinhAnh = "";
-}
+// locationId = new LocationID();
+// }
+// export class LocationID {
+//   id = "";
+//   tenViTri = "";
+//   tinhThanh = "";
+//   quocGia = "";
+//   hinhAnh = "";
+// }

@@ -1,16 +1,14 @@
-// let initalState = {
-//   locationID: {},
-//   arrLocation: {},
-// };
+let initalState = {
+  locationID: {},
+};
 
-// export const locationReducer = (state = initalState, action) => {
-//   switch (action.type) {
-//     case "LOCATION_ID":
-//       state.locationID = action.locationID;
-//       return { ...state };
-//     case "ARR_LOCATION":
-//       state.arrLocation = action.arrLocation;
-//     default:
-//       return { ...state };
-//   }
-// };
+export const locationReducer = (state = initalState, action) => {
+  switch (action.type) {
+    case "LOCATION_ID":
+      state.locationID = action.locationID;
+      return { ...state };
+
+    default:
+      return { ...state };
+  }
+};

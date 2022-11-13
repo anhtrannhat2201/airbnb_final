@@ -8,18 +8,6 @@ import { getRoomDetailAction } from "../../redux/actions/actionRoom";
 import { TabTitle } from "../../Utils/generalFunction";
 
 export default function RoomDetail() {
-  const { roomDetail } = useSelector((state) => state.roomReducer);
-
-  const { id } = useParams();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getRoomDetailAction(id));
-  }, []);
-
-  TabTitle(
-    `Airbnb - Chi tiết phòng - ${roomDetail ? roomDetail.tenPhong : ""}`
-  );
-
   return (
     <>
       <HotelDetail />

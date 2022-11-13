@@ -5,8 +5,4 @@ export const locationSrv = {
     let uri = `/api/vi-tri/${locationID}`;
     return https.get(uri);
   },
-  getLocation: () => {
-    let uri = `/api/vi-tri`;
-    return https.get(uri);
-  },
 };

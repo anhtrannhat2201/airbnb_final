@@ -8,6 +8,6 @@ export let rootReducer = combineReducers({
   spinnerReducer,
   roomReducer,
   userReducer,
-  // locationReducer,
+  locationReducer,
   reviewReducer,
 });
