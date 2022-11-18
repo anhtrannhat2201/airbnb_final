@@ -1,0 +1,218 @@
+
+footer{
+    margin: 0;
+    padding: 0;
+    color: #222222;
+}
+.footer_dot{
+    display: inline-block !important;
+    text-align: center !important;
+    width: 19px !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+
+body {
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #484848;}
+
+span:hover {
+    text-decoration: underline !important;
+    color: "red";
+}
+   
+      
+.footer {
+    border-top:2px solid rgb(161, 160, 160);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    color: black;
+}
+
+/*
+Header of Privacy
+*/
+header  {
+    border-bottom: 1px solid #cac5c5;
+}
+._11eqlma4 {
+    cursor: pointer }
+.header_content{
+    padding: 20px 60px;
+}
+.mt76m69 {
+   font-size: 20px;
+   font-weight: 600;
+}
+
+.dir.m15bpvrt[class][class] {
+    border: 1px solid #EBEBEB;
+    border-radius: 40px;
+}
+.m15bpvrt[class][class] {
+    font-size: 16px;
+    line-height: 20px;
+    color: #717171;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 40px;
+    width: 72px;
+}
+._h69t7tv{
+    margin-left: 140px;
+}
+.l79qg7k {
+    display: inline;
+}
+.tg0jqgn[class][class] {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #222222;
+    display: inline;
+}
+._1sikdxcl{
+    text-decoration: underline;
+}
+.c15y1379{
+    font-weight: 100;
+}
+
+._tcp689{
+    font-size: 16px;
+    color: aliceblue;  
+
+    
+}
+.assistance{
+    background: radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ) !important;
+    border-radius: 10px;
+    width: 90%;
+    margin-left: 16px;
+margin-top: 10px;
+
+}
+/* Content */
+
+.hpwdvd6 h2 {
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 600;
+
+}
+
+.hpwdvd6 h3 {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+.hpwdvd6 ul li{
+    list-style: circle;
+    text-decoration: underline;
+    margin-left: 60px;
+    font-weight: 600;
+    margin-top: 15px;
+    
+}
+/* Bài viết liên quan*/
+.t15kpzrz {
+    font-size: 22px;
+    line-height: 26px;
+    color: #222222;
+    font-weight:600;
+}
+.dir.l1pvymst{
+    margin: 0;
+    padding: 24px 0;
+    border-bottom: 1px solid #DDDDDD;
+}
+.t1imbvyv{
+    font-size: 16px;
+    text-decoration: underline;
+    font-weight: 600;
+}
+.s12spazh{
+    color: #717171;
+    font-weight: 400;
+}
+.t9s5w55 {
+    color: #717171;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+}
+/* Rules*/
+.dir.c123j3p3 {
+    margin-top: 20px;
+    width: 85%;
+}
+.dir.c1gk634l {
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #DDDDDD;
+}
+.hpwdvd6 {
+    color: #222222;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+}
+.hpwdvd6 p {
+    margin-top: 15px;
+}
+.hpwdvd6 a{
+    text-decoration: underline;
+    font-weight:bold;
+}
+/* Sitemap */
+body {
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #484848;
+    background-color: #fff;
+    margin: 0;}
+._csc5ey {
+    border-bottom: 1px solid #EBEBEB ;
+    position: relative ;
+    display: inline-block ;
+    vertical-align: middle ;
+    min-width: 100% ;
+}
+._36rlri {
+    display: inline-block ;
+    margin-left: 30px;
+    font-weight: bold;
+}
+._36rlri {
+    margin-top: 20px;
+}
+.l17l2sen{
+    text-decoration: underline;
+    font-weight: 200;
+    margin-top: 20px;
+   font-weight: 600;
+}
+.l13jydbc[class][class] {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+}
+.l13jydbcc{
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+}
+.l10h6c3{
+    font-weight: 600;
+    margin-top: 10px;
+}
+.atm_9m99np_1o8liyq:nth-of-type(1n) {
+    display: inline-block;
+}
