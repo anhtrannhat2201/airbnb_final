@@ -9,6 +9,10 @@ export const locationSrv = {
     let uri = `/api/vi-tri/${locationID}`;
     return https.get(uri);
   },
+  // getLocationName: (tenViTri = "") => {
+  //   let uri = `/api/vi-tri/phan-trang-tim-kiem?pageIndex=1&pageSize=1&keyword=Qu%E1%BA%ADn%201`;
+  //   return https.get(uri);
+  // },
   postLocation: (values) => {
     let uri = `/api/vi-tri`;
     return https.post(uri, values);

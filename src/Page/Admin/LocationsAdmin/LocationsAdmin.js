@@ -28,12 +28,18 @@ import {
 function LocationsAdmin() {
   // const { userInfor } = useSelector((state) => state.userReducer)
   const { lstLocation } = useSelector((state) => state.locationReducer);
+  const [q, setQ] = useState("");
 
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListLocation());
   }, []);
-
+  const handleSearch = (e) => {
+    setQ(e.target.value?.toLowerCase());
+  };
+  const fSearch = (rows) => {
+    return rows.filter((row) => row?.tenViTri?.toLowerCase().indexOf(q) > -1);
+  };
   const data = lstLocation;
   const columns = [
     {
@@ -147,7 +153,9 @@ function LocationsAdmin() {
       width: "20%",
     },
   ];
-  const onChange = (pagination, filters, sorter, extra) => {};
+  const onChange = (pagination, filters, sorter, extra) => {
+    // console.log('onChange: ', pagination,filters,sorter,extra);
+  };
   const onSearch = (value) => {
     // Goi api lấy danh sách Vị Trí
 
@@ -168,11 +176,12 @@ function LocationsAdmin() {
           enterButton={<SearchOutlined />}
           size="large"
           onSearch={onSearch}
+          onChange={handleSearch}
         />
         <Table
           columns={columns}
-          rowKey={"maPhim"}
-          dataSource={data}
+          rowKey={"id"}
+          dataSource={fSearch(data)}
           onChange={onChange}
         />
       </div>
