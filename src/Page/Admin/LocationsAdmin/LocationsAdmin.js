@@ -21,13 +21,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
-  editImageLocationAction,
+  deleteLocationIdAction,
   getListLocation,
 } from "../../../redux/actions/actionsLocations";
-import { useFormik } from "formik";
 
 function LocationsAdmin() {
-  // const { userInfor } = useSelector((state) => state.userReducer);
+  // const { userInfor } = useSelector((state) => state.userReducer)
   const { lstLocation } = useSelector((state) => state.locationReducer);
 
   let dispatch = useDispatch();
@@ -96,11 +95,11 @@ function LocationsAdmin() {
               </Col>
               <Col>
                 <NavLink
-                  className="mr-2 ml-2 text-2xl"
+                  className="mr-2 -ml-12 text-2xl"
                   style={{ color: "blue" }}
                   to={`/admin/locations/editimagelocations/${record?.id}`}
                 >
-                  <EditOutlined />
+                  <Button>Upload</Button>
                 </NavLink>
               </Col>
             </Row>
@@ -128,14 +127,14 @@ function LocationsAdmin() {
               className="text-2xl hover:cursor-pointer"
               onClick={() => {
                 // gọi action xóa
-                // if (
-                //   window.confirm(
-                //     "Bạn có muốn xóa " + locations.tinhThanh + " không"
-                //   )
-                // ) {
-                //   // gọi action
-                //   dispatch(xoaPhimAction(locations.maPhim));
-                // }
+                if (
+                  window.confirm(
+                    "Bạn có muốn xóa " + locations.tenViTri + " không"
+                  )
+                ) {
+                  // gọi action
+                  dispatch(deleteLocationIdAction(locations.id));
+                }
               }}
               key={index}
               style={{ color: "red" }}

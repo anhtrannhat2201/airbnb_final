@@ -37,7 +37,7 @@ function Admin(props) {
                 aria-label="Back to homepage"
                 className=""
               >
-                <NavLink to={"/admin"}>
+                <NavLink to={"/admin/users"}>
                   <h3
                     style={{ fontSize: 26, paddingTop: 10, paddingLeft: 5 }}
                     className=" h-8 text-amber-600  mt-3 ml-3"
@@ -69,10 +69,6 @@ function Admin(props) {
                   Quản lý thông tin vị trí
                 </NavLink>
               </Menu.Item>
-
-              {/* <Menu.Item key="2" icon={<FileOutlined />}>
-              <NavLink to={"/admin/addnew"}>Thêm mới Phim</NavLink>
-            </Menu.Item> */}
             </SubMenu>
           </Menu>
         </Sider>

@@ -23,7 +23,7 @@ export default function EditImageLocations() {
     enableReinitialize: true,
     initialValues: {
       id,
-      formFile: null,
+      formFile: {},
     },
     onSubmit: (values) => {
       console.log("values: ", values);
