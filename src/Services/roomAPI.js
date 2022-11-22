@@ -25,12 +25,17 @@ export const roomAPI = {
     let uri = `/api/dat-phong`;
     return https.post(uri, data);
   },
-  getReview: (maPhong) => {
+
+  getAllReview: () => {
+    let uri = `/api/binh-luan`;
+    return https.get(uri);
+  },
+  getReviewPhong: (maPhong) => {
     let uri = `/api/binh-luan/lay-binh-luan-theo-phong/${maPhong}`;
     return https.get(uri, maPhong);
   },
-  postReview:(data) => { 
-    let uri= `/api/binh-luan`
-    return https.post(uri,data)
-   } 
+  postReview: (data) => {
+    let uri = `/api/binh-luan`;
+    return https.post(uri, data);
+  },
 };

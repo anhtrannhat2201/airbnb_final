@@ -20,12 +20,12 @@ export const setUserLoginAction = (dataLogin, onLoginSuccess, onLoginFail) => {
     dispatch(setLoadingOnAction());
 
     try {
-      let result = await authAPI.login(dataLogin);
-      localServ.user.set(result.data.content);
+      let datalogin = await authAPI.login(dataLogin);
+      localServ.user.set(datalogin.data.content);
 
       onLoginSuccess();
 
-      await dispatch(setUserLoginSuccess(result.data.content));
+      await dispatch(setUserLoginSuccess(datalogin.data.content));
       await dispatch(setLoadingOffAction());
     } catch (error) {
       console.log(error);

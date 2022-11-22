@@ -10,15 +10,9 @@ import { getRoomDetailAction } from "../../redux/actions/actionRoom";
 import { TabTitle } from "../../Utils/generalFunction";
 
 function HotelDetail() {
-  const { roomDetail, roomDetailAddress } = useSelector(
-    (state) => state.roomReducer
-  );
+  const { roomDetailAddress } = useSelector((state) => state.roomReducer);
   console.log("roomDetailAddress: ", roomDetailAddress);
-  TabTitle(
-    `Airbnb - Chi tiết phòng - ${
-      roomDetailAddress ? roomDetailAddress.tenPhong : ""
-    }`
-  );
+  TabTitle(`Airbnb - ${roomDetailAddress ? roomDetailAddress.tenPhong : ""}`);
   const dispatch = useDispatch();
 
   const { id } = useParams();

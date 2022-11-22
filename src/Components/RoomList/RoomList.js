@@ -42,7 +42,7 @@ export default function RoomList() {
             <NavLink
               key={room.id}
               className="roomLink"
-              to={`/roomdetail/${room.id}`}
+              to={`/roomdetail/${room.id}/${room.tenPhong}`}
             >
               <Swiper
                 pagination={{

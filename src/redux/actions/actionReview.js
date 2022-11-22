@@ -1,14 +1,26 @@
 import { roomAPI } from "../../Services/roomAPI";
 import { setLoadingOffAction, setLoadingOnAction } from "./actionSpinner";
-
-export const getReviewAction = (maPhong) => {
+export const getAllReview = () => {
   return async (dispatch) => {
     try {
-      let resut = await roomAPI.getReview(maPhong);
-      console.log("resut: ", resut);
+      let review = await roomAPI.getAllReview();
+      dispatch({
+        type: "GET_ALL_REVIEW",
+        allReview: review.data.content,
+      });
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
+};
+export const getPhongReviewAction = (maPhong) => {
+  return async (dispatch) => {
+    try {
+      let result = await roomAPI.getReviewPhong(maPhong);
+      console.log("resut: ", result);
       dispatch({
         type: "GET_LIST_REVIEW",
-        listReview: resut.data.content,
+        listReview: result.data.content,
       });
     } catch (error) {
       console.log("error: ", error);

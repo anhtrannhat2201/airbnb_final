@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
-  getReviewAction,
+  getPhongReviewAction,
   postReviewAction,
 } from "../../redux/actions/actionReview";
 
@@ -15,9 +15,8 @@ function Review() {
   const { roomDetail } = useSelector((state) => state.roomReducer);
   const { userInfor } = useSelector((state) => state.userReducer);
 
-  const [componentSize, setComponentSize] = useState("default");
-
   const { listReview } = useSelector((state) => state.reviewReducer);
+  console.log("listReview: ", listReview);
 
   const { id } = useParams();
 
@@ -33,9 +32,9 @@ function Review() {
   //   console.log("value", value);
   // };
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getReviewAction(id));
-  // }, []);
+  useEffect(() => {
+    dispatch(getPhongReviewAction(id));
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -57,9 +56,7 @@ function Review() {
       dispatch(postReviewAction(values));
     },
   });
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
-  };
+
   return (
     <div className="mt-10 pb-5 border-b">
       {/* header */}
@@ -246,11 +243,6 @@ function Review() {
           span: 16,
         }}
         layout="horizontal"
-        initialValues={{
-          size: componentSize,
-        }}
-        onValuesChange={onFormLayoutChange}
-        size={componentSize}
       >
         <p className="text-xl">
           <span>
