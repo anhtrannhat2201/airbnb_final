@@ -99,7 +99,7 @@ function LocationsAdmin() {
                   style={{ color: "blue" }}
                   to={`/admin/locations/editimagelocations/${record?.id}`}
                 >
-                  <Button>Upload</Button>
+                  <Button>Update Image</Button>
                 </NavLink>
               </Col>
             </Row>
