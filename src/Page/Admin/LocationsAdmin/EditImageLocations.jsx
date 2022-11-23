@@ -1,99 +1,122 @@
-import { Form, Input } from "antd";
+import { Button, Form, Modal, notification, Spin, Upload } from "antd";
+import { EditOutlined } from "@ant-design/icons";
+
 import { useFormik } from "formik";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  editImageLocationAction,
-  getLocationIdAction,
-} from "../../../redux/actions/actionsLocations";
+import { getListLocation } from "../../../redux/actions/actionsLocations";
+import { https } from "../../../Services/configURL";
 
-export default function EditImageLocations() {
-  const [imgSrc, setImgSrc] = useState("");
-  const { userInfor } = useSelector((state) => state.userReducer);
+export default function EditImageLocations({ id, hinhAnh }) {
+  const [fileList, setFileList] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const [imgSrc, setImgSrc] = useState("");
+  // const { userInfor } = useSelector((state) => state.userReducer);
 
   const { inforLocation } = useSelector((state) => state.locationReducer);
   console.log("inforLocation: ", inforLocation);
-  const { id } = useParams();
+  // const { id } = useParams();
   let dispatch = useDispatch();
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  const nameCover = "Default Image";
   useEffect(() => {
-    dispatch(getLocationIdAction(id));
+    setFileList(
+      hinhAnh
+        ? [
+            {
+              uid: -1,
+              name: nameCover,
+              url: hinhAnh,
+            },
+          ]
+        : []
+    );
   }, []);
-  const formik = useFormik({
-    enableReinitialize: true,
-    initialValues: {
-      id,
-      formFile: {},
-    },
-    onSubmit: (values) => {
-      console.log("values: ", values);
-      // tạo đối tượng form data => đưa giá trị values từ formik vào form data
-      let formData = new FormData();
-      for (let key in values) {
-        if (key !== "hinhAnh") {
-          formData.append(key, values[key]);
-        } else {
-          if (values.hinhAnh !== null) {
-            formData.append("File", values.formFile, values.formFile.name);
-          }
-        }
-      }
-      console.log("formData: ", formData);
-      // cập nhật phim upload action
-      dispatch(editImageLocationAction(values));
-    },
-  });
-  const handleChangeFile = async (e) => {
-    // Lấy file ra từ e
+  const uploadImage = async (options) => {
+    const { file } = options;
 
-    let file = e.target.files[0];
-    // setValidation
-    await formik.setFieldValue("formFile", file);
+    let formData = new FormData();
 
-    if (
-      file.type === "image/apng" ||
-      file.type === "image/gif" ||
-      file.type === "image/jpeg" ||
-      file.type === "image/png"
-    ) {
-      // tạo đối tượng để đọc file
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (e) => {
-        setImgSrc(e.target.result); // hình base 64
+    formData.append("formFile", file);
+    try {
+      const openNotificationWithIconSuccess = (type = "success") => {
+        notification[type]({
+          message: "Success",
+          description: "Update Image Success",
+        });
       };
+      const result = await https.post(
+        `/api/vi-tri/upload-hinh-vitri?maViTri=${id}`,
+        formData
+      );
+      if (result.data.statusCode === 200) {
+        setFileList([
+          {
+            uid: result.data.content.id,
+            name: nameCover,
+            url: result.data.content.hinhAnh,
+          },
+        ]);
+      }
+      openNotificationWithIconSuccess("success");
+      dispatch(getListLocation());
+    } catch (err) {
+      const openNotificationWithIconError = (type = "error") => {
+        notification[type]({
+          message: "Error",
+          description: err.response.data.content,
+        });
+      };
+      openNotificationWithIconError("error");
     }
   };
+
   return (
+    // <section
+    //   className="upload_Image"
+    //   style={{ position: "absolute", top: 30, left: 100 }}
+    // >
     <Fragment>
-      <Form
-        onSubmitCapture={formik.handleSubmit}
-        layout="vertical"
-        name="form_in_modal"
-        initialValues={{ modifier: "public" }}
+      <EditOutlined size={50} onClick={showModal} />
+      <Modal
+        title="Upload Image"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
       >
-        <Form.Item label="Hình Ảnh">
-          <input
-            type="file"
-            onChange={handleChangeFile}
-            accept="image/apng, image/gif, image/jpeg, image/png"
-          />
-          <br />
-          <img
-            style={{ width: 200, height: 200 }}
-            src={imgSrc === "" ? inforLocation.hinhAnh : imgSrc}
-            alt="...."
-          />
-        </Form.Item>
-        <Form.Item>
-          <button
-            type="submit"
-            className="bg-blue-400 text-white p-3 rounded hover:bg-blue-500 "
-          >
-            Cập nhật ảnh
-          </button>
-        </Form.Item>
-      </Form>
+        <Upload
+          accept="image/*"
+          customRequest={uploadImage}
+          listType="picture-card"
+          fileList={fileList}
+          showUploadList={{ showRemoveIcon: true }}
+          iconRender={() => {
+            return <Spin></Spin>;
+          }}
+          progress={{
+            strokeWidth: 3,
+            strokeColor: {
+              "0%": "#f0f",
+              "100%": "#f00",
+            },
+            style: { top: 12 },
+          }}
+        >
+          <Button>Upload</Button>
+        </Upload>
+      </Modal>
     </Fragment>
+    // </section>
   );
 }

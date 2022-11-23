@@ -24,6 +24,7 @@ import {
   deleteLocationIdAction,
   getListLocation,
 } from "../../../redux/actions/actionsLocations";
+import EditImageLocations from "./EditImageLocations";
 
 function LocationsAdmin() {
   // const { userInfor } = useSelector((state) => state.userReducer)
@@ -100,13 +101,20 @@ function LocationsAdmin() {
                 />
               </Col>
               <Col>
-                <NavLink
+                <Button>
+                  <EditImageLocations
+                    id={record?.id}
+                    hinhAnh={record.hinhAnh}
+                  />
+                </Button>
+
+                {/* <NavLink
                   className="mr-2 -ml-12 text-2xl"
                   style={{ color: "blue" }}
                   to={`/admin/locations/editimagelocations/${record?.id}`}
                 >
                   <Button>Update Image</Button>
-                </NavLink>
+                </NavLink> */}
               </Col>
             </Row>
           </Fragment>
