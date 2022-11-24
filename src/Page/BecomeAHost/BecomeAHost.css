@@ -1,0 +1,84 @@
+.gradients {
+  padding: 15px 25px;
+  font-size: 15px;
+  font-weight: 500;
+  background-image: linear-gradient(135deg, #FF0099 10%, #493240 100%);
+  background-size: 200%;
+  border: 1px solid transparent;
+  transition: all .5s;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  outline: 0;
+  line-height: 1.2;
+}
+
+._1tllc1q {
+  /* border-radius: var(--dls-base-video-border-radius, 0) !important; */
+  height: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  width: 100% !important;
+  will-change: transform !important;
+}
+
+._170yk6jn {
+  height: calc(100% + 48px) !important;
+  margin-top: -50px !important;
+  width: 740px;
+}
+
+._e2l2kr {
+  display: block !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.active {
+  height: 4rem;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  transition: 0.3s linear;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  z-index: 40;
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, .08);
+  /* padding: 0 7%; */
+}
+
+.hidden {
+  height: 4rem;
+  width: 100%;
+  z-index: 40;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, .08);
+  position: fixed;
+  top: -80px;
+  transition: 0.3s linear;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+.button {
+  display: inline-block;
+  transform: translateX(425%);
+  margin-top: 53px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  text-align: center;
+  padding: 13px 23px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.text-sm {
+  text-decoration: none !important;
+}

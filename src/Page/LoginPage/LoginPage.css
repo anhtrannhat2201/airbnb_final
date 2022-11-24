@@ -1,0 +1,30 @@
+#basic_password{
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgb(55, 65, 81, 0.1)
+}
+
+.ant-input-suffix{
+    display: none;
+}
+
+.singin{
+    border: none !important;
+    
+}
+
+.gradients{
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    background-image: linear-gradient(135deg, #FF0099 10%, #493240 100%);
+    background-size: 200%;
+    transition: all .5s;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    outline: 0;
+
+}

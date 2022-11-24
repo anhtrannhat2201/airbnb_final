@@ -1,0 +1,97 @@
+.text {
+    font-size: 56px;
+    line-height: 64px;
+}
+
+.slick-dots {
+    position: absolute;
+    bottom: -25px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    display: none !important;
+}
+   
+  /* card style start */
+   
+  .img-card {
+    border-radius: 4px;
+    background: white;
+    color: #666;
+    overflow: hidden;
+    /* box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    transition: 0.3s; */
+  }
+
+   
+  .img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    
+  }
+   
+  .card-body {
+    padding: 15px;
+  }
+   
+  .card-title {
+    font-size: 20px;
+    font-weight: 200;
+    color: #000;
+  }
+   
+  .card-text {
+    margin-top: 10px;
+  }
+   
+  /* card style end */
+   
+   
+  /* carousel slider style start */
+   
+  .slick-slide > div {
+    margin: 0 10px;
+    color: red;
+    display: block;
+  }
+   
+  .slick-list {
+    margin: 0 -10px;
+  }
+   
+  .slick-slide *:focus{
+    outline: none;
+  }
+  .slick-next {
+    right: -30px;
+    background: rgb(176, 164, 164);
+    color: #222222;
+}
+
+.slick-prev {
+    left: -30px;
+    background: rgb(176, 164, 164);
+    color: #222222
+}
+
+.slick-prev:hover, .slick-prev:focus{
+    left: -30px;
+    background: rgb(176, 164, 164);
+    color: #222222
+}
+
+.slick-next:hover, .slick-next:focus {
+    right: -30px;
+    background: rgb(176, 164, 164);
+    color: #222222
+}
+
+.signature{
+  height: 32px;
+  text-align: left;
+  margin: 20px 0px;
+}
