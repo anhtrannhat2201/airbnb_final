@@ -18,7 +18,7 @@ import {
 export default function FormGetBooking() {
   const { roomDetail } = useSelector((state) => state.roomReducer);
 
-  const { userInfor } = useSelector((state) => state.userReducer);
+  const { userInfor } = useSelector((state) => state.reducerUser);
 
   const [checkInDate, setCheckInDate] = useState(new Date());
   const [checkOutDate, setCheckOutDate] = useState(new Date());

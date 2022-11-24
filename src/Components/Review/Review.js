@@ -1,6 +1,6 @@
-import { Button, Form, Input } from "antd";
+import { Form } from "antd";
 import { useFormik } from "formik";
-import { get } from "lodash";
+
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -13,10 +13,9 @@ import {
 
 function Review() {
   const { roomDetail } = useSelector((state) => state.roomReducer);
-  const { userInfor } = useSelector((state) => state.userReducer);
+  const { userInfor } = useSelector((state) => state.reducerUser);
 
   const { listReview } = useSelector((state) => state.reviewReducer);
-  console.log("listReview: ", listReview);
 
   const { id } = useParams();
 
@@ -288,7 +287,7 @@ function Review() {
           />
         </Form.Item>
 
-        <div className="mt-5">
+        <div className="mt-5 mb-10">
           <button
             type="submit"
             className="px-2 py-3 bg-blue-500 text-white  hover:bg-blue-400 transition-all duration-200 rounded-md"
@@ -297,15 +296,6 @@ function Review() {
           </button>
         </div>
       </Form>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </div>
   );
 }
