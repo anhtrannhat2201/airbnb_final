@@ -14,6 +14,9 @@ import LocationsAdmin from "./Page/Admin/LocationsAdmin/LocationsAdmin";
 import UserAdmin from "./Page/Admin/UsersAdmin/UsersAdmin";
 import EditLocations from "./Page/Admin/LocationsAdmin/EditLocations";
 import EditImageLocations from "./Page/Admin/LocationsAdmin/EditImageLocations";
+import BecomeAHost from "./Page/BecomeAHost/BecomeAHost";
+import SignUpPage from "./Page/SignUpPage/SignUpPage";
+import UserInfor from "./Page/UserInforPage/UserInfor";
 
 function App() {
   return (
@@ -30,6 +33,7 @@ function App() {
               </SecureView>
             }
           />
+          <Route path="/becomeahost" element={<BecomeAHost />} />
           <Route
             path="/roomdetail/:id/:tenPhong"
             element={
@@ -38,7 +42,9 @@ function App() {
               </SecureView>
             }
           />
-          <Route path="/login" element={<LoginPage Component={LoginPage} />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/userinfor" element={<Layout Component={UserInfor} />} />
+          <Route path="/signup" element={<SignUpPage />} />
 
           <Route
             path="/admin/locations"

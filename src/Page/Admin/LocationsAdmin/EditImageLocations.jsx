@@ -12,12 +12,6 @@ export default function EditImageLocations({ id, hinhAnh }) {
   const [fileList, setFileList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const [imgSrc, setImgSrc] = useState("");
-  // const { userInfor } = useSelector((state) => state.userReducer);
-
-  const { inforLocation } = useSelector((state) => state.locationReducer);
-  console.log("inforLocation: ", inforLocation);
-  // const { id } = useParams();
   let dispatch = useDispatch();
   const showModal = () => {
     setIsModalOpen(true);
@@ -83,12 +77,12 @@ export default function EditImageLocations({ id, hinhAnh }) {
   };
 
   return (
-    // <section
-    //   className="upload_Image"
-    //   style={{ position: "absolute", top: 30, left: 100 }}
-    // >
     <Fragment>
-      <EditOutlined size={50} onClick={showModal} />
+      <EditOutlined
+        className="text-2xl hover:text-blue-400"
+        size={100}
+        onClick={showModal}
+      />
       <Modal
         title="Upload Image"
         open={isModalOpen}
@@ -117,6 +111,5 @@ export default function EditImageLocations({ id, hinhAnh }) {
         </Upload>
       </Modal>
     </Fragment>
-    // </section>
   );
 }

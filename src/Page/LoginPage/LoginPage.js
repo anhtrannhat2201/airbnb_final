@@ -1,17 +1,16 @@
 import { Button, Form, Input, message } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import React from "react";
-import { localServ } from "../../Services/localServices";
 
 import { useDispatch } from "react-redux";
 import logo_login from "../../assets/logo_login.jpg";
 
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { TabTitle } from "../../Utils/generalFunction";
-import { setUserLoginAction } from "../../redux/actions/actionUser";
 
+import { setUserLoginAction } from "../../redux/actions/actionInforUser";
 const LoginPage = () => {
-  TabTitle("AirBnb-Đăng nhập");
+  TabTitle("Đăng nhập");
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -32,7 +31,7 @@ const LoginPage = () => {
     let onSuccess = () => {
       alert("Đăng nhập thành công");
       setTimeout(() => {
-        navigate(-1);
+        navigate("/");
       }, 1000);
     };
     let onFail = () => {
@@ -63,6 +62,7 @@ const LoginPage = () => {
             autoComplete="off"
           >
             <Form.Item
+              style={{ marginTop: 60 }}
               type="input"
               label="Email"
               name="email"
@@ -82,34 +82,20 @@ const LoginPage = () => {
             </Form.Item>
 
             <Form.Item
-              label="Mật khẩu"
+              label="Mật Khẩu"
               name="password"
               rules={[
                 {
                   required: true,
-                  message: (
-                    <span className="text-red-400">
-                      Please input your Password!
-                    </span>
-                  ),
+                  message: 'Vui Lòng Nhập Vào Mật Khẩu!',
                 },
               ]}
-              className="mb-5"
             >
-              <input
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                type="password"
-              />
+              <Input.Password className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </Form.Item>
 
             <Form.Item>
               <div className="grid grid-cols-2 items-center mb-6">
-                <NavLink
-                  className="text-rose-700 hover:text-rose-500 hover:underline underline-offset-4 tracking-wider duration-200"
-                  to=""
-                >
-                  Quên mật khẩu?
-                </NavLink>
                 <Button
                   type="submit"
                   htmlType="submit"
@@ -119,6 +105,17 @@ const LoginPage = () => {
                 </Button>
               </div>
             </Form.Item>
+            <Form.Item>
+              <div className="grid grid-cols-2 items-center mb-6">
+                <NavLink
+                  className="text-rose-700 hover:text-rose-500 hover:underline underline-offset-4 tracking-wider duration-200"
+                  to=""
+                >
+                  Quên mật khẩu?
+                </NavLink>
+              </div>
+            </Form.Item>
+
           </Form>
         </div>
       </div>

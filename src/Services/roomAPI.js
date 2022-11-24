@@ -38,4 +38,12 @@ export const roomAPI = {
     let uri = `/api/binh-luan`;
     return https.post(uri, data);
   },
+  getInforRoom: (maNguoiDung) => {
+    let uri = `/api/dat-phong/lay-theo-nguoi-dung/${maNguoiDung}`;
+    return https.get(uri);
+  },
+  getRentedRoom: (id) => {
+    let uri = `/api/phong-thue/${id}`;
+    return https.get(uri);
+  },
 };

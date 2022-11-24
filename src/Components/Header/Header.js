@@ -1,21 +1,33 @@
 import React from "react";
-import { DesktopView, MobileView, TabletView } from "../../HOC/Reponsive";
-import HeaderHeaderDeskTop from "./HeaderHeaderDeskTop";
-import HeaderHeaderMobile from "./HeaderHeaderMobile";
-import HeaderHeaderTablet from "./HeaderHeaderTablet";
+import { Box, Container } from "@mui/material";
+import Logo from "./Logo";
+import LocationSearch from "./LocationSearch";
+import ProfileSetting from "./ProfileSetting";
 
 export default function Header() {
   return (
-    <div className="h-20">
-      <DesktopView>
-        <HeaderHeaderDeskTop />
-      </DesktopView>
-      <TabletView>
-        <HeaderHeaderTablet />
-      </TabletView>
-      <MobileView>
-        <HeaderHeaderMobile />
-      </MobileView>
-    </div>
+    <Box
+      sx={{
+        minHeight: 70,
+        borderBottom: "1px solid #ddd",
+        display: "flex",
+      }}
+    >
+      <Container maxWidth="xl">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            minHeight: 70,
+            px: 4,
+          }}
+        >
+          <Logo />
+          <LocationSearch />
+          <ProfileSetting />
+        </Box>
+      </Container>
+    </Box>
   );
 }
