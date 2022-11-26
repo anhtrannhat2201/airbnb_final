@@ -12,7 +12,6 @@ export default function HomePage() {
     <div>
       <Filter />
       <RoomList />
-      <Footer />
     </div>
   );
 }

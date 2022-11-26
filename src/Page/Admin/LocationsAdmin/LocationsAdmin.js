@@ -101,24 +101,10 @@ function LocationsAdmin() {
                 />
               </Col>
               <Col>
-                {/* <Button> */}
-                {/* <span className="bg-blue-500"> */}
-
                 <EditImageLocations
                   id={record?.id}
                   hinhAnh={record.hinhAnh}
                 ></EditImageLocations>
-
-                {/* </span> */}
-                {/* </Button> */}
-
-                {/* <NavLink
-                  className="mr-2 -ml-12 text-2xl"
-                  style={{ color: "blue" }}
-                  to={`/admin/locations/editimagelocations/${record?.id}`}
-                >
-                  <Button>Update Image</Button>
-                </NavLink> */}
               </Col>
             </Row>
           </Fragment>

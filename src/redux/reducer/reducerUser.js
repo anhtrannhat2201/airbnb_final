@@ -7,6 +7,7 @@ import {
 
 const initialState = {
   userInfor: localServ.user.get(),
+
   userInforDetail: [],
   arrUser: [],
   searchUser: [],

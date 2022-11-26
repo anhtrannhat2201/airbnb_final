@@ -21,10 +21,6 @@ export const locationSrv = {
   //   let uri = `/api/vi-tri/upload-hinh-vitri`;
   //   return https.post(uri, values);
   // },
-  editImageLocation: (values) => {
-    let uri = `/api/vi-tri/upload-hinh-vitri?maViTri=1365`;
-    return https.post(uri, values);
-  },
   deleteLocationId: (maViTri) => {
     let uri = `/api/vi-tri/${maViTri}`;
     return https.delete(uri);

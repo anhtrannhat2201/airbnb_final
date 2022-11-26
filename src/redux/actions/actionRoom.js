@@ -5,13 +5,13 @@ import { INFOR_ROOM, RENTED_ROOM } from "../constants/constantsRoom";
 
 import { setLoadingOffAction, setLoadingOnAction } from "./actionSpinner";
 
-export const getListRoomAction = (ID) => {
+export const getListRoomAction = () => {
   return async (dispatch) => {
     try {
       dispatch(setLoadingOnAction());
 
-      const result = await roomAPI.getListRoom(ID);
-      // console.log("result: ", result);
+      const result = await roomAPI.getListRoom();
+      console.log("result: ", result);
 
       dispatch({
         type: "LIST_ROOM",
@@ -134,6 +134,19 @@ export const postDatPhongAction = (value) => {
       dispatch(setLoadingOffAction());
     } catch (err) {
       console.log(err.response?.data);
+      dispatch(setLoadingOffAction());
+    }
+  };
+};
+export const deleteRoomAction = (value) => {
+  return async (dispatch) => {
+    try {
+      dispatch(setLoadingOnAction());
+      const deleteRoom = await roomAPI.deleteRoom(value);
+
+      dispatch(setLoadingOffAction());
+    } catch (err) {
+      console.log("err: ", err.response?.data);
       dispatch(setLoadingOffAction());
     }
   };

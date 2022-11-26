@@ -4,6 +4,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import { Link } from "react-router-dom";
 import AccountMenu from "./AccountMenu";
 import { USER } from "../../Services/localServices";
+import { useSelector } from "react-redux";
 export default function ProfileSetting() {
   if (localStorage.getItem(USER)) {
     return (
@@ -13,12 +14,6 @@ export default function ProfileSetting() {
           justifyContent: "center",
         }}
       >
-        <Link to="/adminuser">
-          <h1 className="text-black mt-3 mr-3 font-medium hover:rounded-3xl hover:bg-gray-100">
-            Quản Lí
-          </h1>
-        </Link>
-
         <Link to="/becomeahost">
           <h1 className="text-black mt-3 font-medium hover:rounded-3xl hover:bg-gray-100">
             Đón Tiếp Khách

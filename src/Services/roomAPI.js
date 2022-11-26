@@ -46,4 +46,8 @@ export const roomAPI = {
     let uri = `/api/phong-thue/${id}`;
     return https.get(uri);
   },
+  deleteRoom: (id) => {
+    let uri = `/api/phong-thue/${id}`;
+    return https.delete(uri);
+  },
 };

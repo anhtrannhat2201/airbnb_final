@@ -19,6 +19,9 @@ import UserInfor from "./Page/UserInforPage/UserInfor";
 import Privacy from "./Components/Footer/DetailFooter/Privacy";
 import Rules from "./Components/Footer/DetailFooter/Rules";
 import Sitemap from "./Components/Footer/DetailFooter/Sitemap";
+import RoomsAdmin from "./Page/Admin/RoomsAdmin/RoomsAdmin";
+import AddNewRoomsAdmin from "./Page/Admin/RoomsAdmin/AddNewRoomsAdmin/AddNewRoomsAdmin";
+import EditRooms from "./Page/Admin/RoomsAdmin/EditRoomsAdmin/EditRoomsAdmin";
 function App() {
   return (
     <div>
@@ -55,6 +58,30 @@ function App() {
             }
           />
           <Route
+            path="/admin/rooms"
+            element={
+              <SecureView>
+                <Admin Component={RoomsAdmin} />
+              </SecureView>
+            }
+          />
+          <Route
+            path="/admin/rooms/addnew"
+            element={
+              <SecureView>
+                <Admin Component={AddNewRoomsAdmin} />
+              </SecureView>
+            }
+          />
+          <Route
+            path="/admin/rooms/editrooms/:id"
+            element={
+              <SecureView>
+                <Admin Component={EditRooms} />
+              </SecureView>
+            }
+          />
+          <Route
             path="/admin/locations/addnew"
             element={
               <SecureView>
@@ -86,6 +113,15 @@ function App() {
               </SecureView>
             }
           />
+          <Route
+            path="/admin/users/:id/:name"
+            element={
+              <SecureView>
+                <Admin Component={UserInfor} />
+              </SecureView>
+            }
+          />
+
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/rules" element={<Rules />} />
           <Route path="/sitemap" element={<Sitemap />} />

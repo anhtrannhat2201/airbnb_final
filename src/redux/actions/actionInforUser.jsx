@@ -20,7 +20,7 @@ export const manageInforUser = (id) => {
         userInforDetail: res.data.content,
       });
     } catch (err) {
-      console.log("err: ", err);
+      console.log("err: ", err.response.data);
     }
   };
 };
@@ -33,7 +33,7 @@ export const upLoadAvatarUserAction = (formData) => {
       alert("Cap Nhat thnah Cong");
       dispatch(manageInforUser());
     } catch (err) {
-      alert("Cap Nhat That Baij");
+      alert("Cap Nhat That Bai");
       console.log(err);
     }
   };
@@ -91,6 +91,7 @@ export const setUserLoginAction = (dataLogin, onLoginSuccess, onLoginFail) => {
 
 export const getUsers = () => {
   return async (dispatch) => {
+    dispatch(setLoadingOnAction());
     try {
       const res = await userServ.getUser();
       // console.log('res: ', res);
@@ -98,10 +99,12 @@ export const getUsers = () => {
         type: GET_USER,
         arrUser: res.data.content,
       });
+      dispatch(setLoadingOffAction());
 
-      dispatch(manageInforUser());
+      // dispatch(manageInforUser());
     } catch (err) {
-      // console.log('err: ', err);
+      console.log("err: ", err.response?.data);
+      dispatch(setLoadingOffAction());
     }
   };
 };

@@ -2,7 +2,7 @@ import { Button, Form, Input, message } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import React from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import logo_login from "../../assets/logo_login.jpg";
 
 import { NavLink, useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ import { TabTitle } from "../../Utils/generalFunction";
 import { setUserLoginAction } from "../../redux/actions/actionInforUser";
 const LoginPage = () => {
   TabTitle("Đăng nhập");
-
+  // const { userInfor } = useSelector((state) => state.reducerUser);
   let dispatch = useDispatch();
   let navigate = useNavigate();
   // const {
@@ -30,6 +30,7 @@ const LoginPage = () => {
   const onFinish = (values) => {
     let onSuccess = () => {
       alert("Đăng nhập thành công");
+
       setTimeout(() => {
         navigate("/");
       }, 1000);
@@ -87,7 +88,7 @@ const LoginPage = () => {
               rules={[
                 {
                   required: true,
-                  message: 'Vui Lòng Nhập Vào Mật Khẩu!',
+                  message: "Vui Lòng Nhập Vào Mật Khẩu!",
                 },
               ]}
             >
@@ -115,7 +116,6 @@ const LoginPage = () => {
                 </NavLink>
               </div>
             </Form.Item>
-
           </Form>
         </div>
       </div>

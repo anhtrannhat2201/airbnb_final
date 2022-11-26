@@ -17,7 +17,7 @@ import { NavLink } from "react-router-dom";
 const { Search } = Input;
 function UsersAdmin() {
   let { arrUser } = useSelector((state) => state.reducerUser);
-  // console.log('arrUser: ', arrUser);
+  console.log("arrUser: ", arrUser);
 
   let dispatch = useDispatch();
   useEffect(() => {
@@ -27,6 +27,21 @@ function UsersAdmin() {
   const dataSource = arrUser;
 
   const columns = [
+    {
+      title: "Id",
+      dataIndex: "id",
+      sorter: (a, b) => {
+        let nameA = a.name.toLowerCase().trim();
+        let nameB = b.name.toLowerCase().trim();
+        if (nameA > nameB) {
+          return 1;
+        }
+        return -1;
+      },
+      width: "15%",
+
+      sortDirections: ["descend", "ascend"],
+    },
     {
       title: "Name",
       dataIndex: "name",
@@ -70,7 +85,7 @@ function UsersAdmin() {
     ,
     {
       title: "Action",
-      dataIndex: "name",
+      dataIndex: "id",
       render: (text, user) => {
         // console.log('user: ', user);
         return (
@@ -110,31 +125,33 @@ function UsersAdmin() {
 
   const onChange = (pagination, filters, sorter, extra) => {};
   const onSearch = (value) => {
+    console.log("value: ", value);
     // Goi api laydanhsachphim
-
-    dispatch(searchUsers(value));
+    // dispatch(searchUsers(value));
   };
   return (
-    <div className="text-4xl">
-      <h3>Quản lý User</h3>
+    <Fragment>
+      <div className="text-4xl">
+        <h3>Quản lý User</h3>
 
-      <Button type="primary" className="mb-3 rounded">
-        Thêm mới Nguời dùng
-      </Button>
+        <Button type="primary" className="mb-3 rounded">
+          Thêm mới Nguời dùng
+        </Button>
 
-      <Search
-        placeholder="Tìm kiếm tài khoản người dùng"
-        enterButton={<SearchOutlined />}
-        size="large"
-        onSearch={onSearch}
-      />
-      <Table
-        columns={columns}
-        rowKey={"taiKhoan"}
-        dataSource={dataSource}
-        onChange={onChange}
-      />
-    </div>
+        <Search
+          placeholder="Tìm kiếm tài khoản người dùng"
+          enterButton={<SearchOutlined />}
+          size="large"
+          onSearch={onSearch}
+        />
+        <Table
+          columns={columns}
+          rowKey={"id"}
+          dataSource={dataSource}
+          onChange={onChange}
+        />
+      </div>
+    </Fragment>
   );
 }
 

@@ -19,10 +19,10 @@ body {
   color: #484848;
 }
 
-span:hover {
+/* span:hover {
   text-decoration: underline !important;
   color: "red";
-}
+} */
 
 .footer {
   border-top: 2px solid rgb(161, 160, 160);

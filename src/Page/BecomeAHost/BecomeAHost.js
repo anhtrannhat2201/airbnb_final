@@ -1,31 +1,31 @@
-import { Box, Stack } from '@mui/material'
-import { display } from '@mui/system';
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import './BecomeAHost.css'
-import Carousel from './Carousel';
+import { Box, Stack } from "@mui/material";
+import { display } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./BecomeAHost.css";
+import Carousel from "./Carousel";
 // import Map from './Map';
-import Pricing from './Pricing';
+import Pricing from "./Pricing";
 
 export default function BecomeAHost() {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(true);
   const controlNavbar = () => {
     if (window.scrollY < 300) {
-      setShow(true)
+      setShow(true);
     } else {
-      setShow(false)
+      setShow(false);
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', controlNavbar)
+    window.addEventListener("scroll", controlNavbar);
     return () => {
-      window.removeEventListener('scroll', controlNavbar)
-    }
-  }, [])
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, []);
   return (
     <div>
-      <header className={`active content ${show && 'hidden'}`}>
+      <header className={`active1 content ${show && "hidden"}`}>
         <Box>
           <Link to="/">
             <img
@@ -80,7 +80,7 @@ export default function BecomeAHost() {
           </div>
         </div>
         <div className="_170yk6jn">
-          <div className="_1tllc1q" style={{ flex: '50%' }}>
+          <div className="_1tllc1q" style={{ flex: "50%" }}>
             <video
               className="_e2l2kr"
               autoPlay
@@ -164,25 +164,75 @@ export default function BecomeAHost() {
           </div>
         </div>
       </div>
-      <div style={{ marginTop: 120, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+      <div
+        style={{
+          marginTop: 120,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
         <Pricing />
       </div>
-      <div style={{ margin: '150px 50px' }}><Carousel /></div>
+      <div style={{ margin: "150px 50px" }}>
+        <Carousel />
+      </div>
       <div>
-        <div style={{ backgroundColor: '#FF385C', margin: '96px 48px', borderRadius: '10px', height: 500, width: '93%' }}>
-          <div className='text-center text-4xl font-bold lg:text-5xl text-white' style={{ paddingTop: '155px' }}>Giúp đỡ chỗ ở cho 100.000 người tị nạn đang
+        <div
+          style={{
+            backgroundColor: "#FF385C",
+            margin: "96px 48px",
+            borderRadius: "10px",
+            height: 500,
+            width: "93%",
+          }}
+        >
+          <div
+            className="text-center text-4xl font-bold lg:text-5xl text-white"
+            style={{ paddingTop: "155px" }}
+          >
+            Giúp đỡ chỗ ở cho 100.000 người tị nạn đang
             <br />
-            chạy trốn khỏi Ukraine</div>
-          <button className='button hover:bg-gray-600'><a className='text-white text-sm' href='https://vi.airbnb.org/help-ukraine?_ga=2.44083812.1163796900.1666590845-867797294.1666072157&_set_bev_on_new_domain=1666336734_MGI5OWIzNTMzNWVj'>Tìm hiểu Thêm</a></button>
+            chạy trốn khỏi Ukraine
+          </div>
+          <button className="button hover:bg-gray-600">
+            <a
+              className="text-white text-sm"
+              href="https://vi.airbnb.org/help-ukraine?_ga=2.44083812.1163796900.1666590845-867797294.1666072157&_set_bev_on_new_domain=1666336734_MGI5OWIzNTMzNWVj"
+            >
+              Tìm hiểu Thêm
+            </a>
+          </button>
         </div>
       </div>
       <div>
         <div style={{ paddingBottom: 300 }}>
-          <img style={{ borderRadius: '10px', position: 'absolute', width: '93%', margin: '0px 48px' }} src="../../ImgCarousel/anh7.webp" alt="" />
-          <div className='text-center ml-5 text-4xl font-bold lg:text-5xl text-white' style={{ paddingTop: '370px', position: 'relative' }}>Bạn có thắc mắc về việc đón tiếp khách?
+          <img
+            style={{
+              borderRadius: "10px",
+              position: "absolute",
+              width: "93%",
+              margin: "0px 48px",
+            }}
+            src="../../ImgCarousel/anh7.webp"
+            alt=""
+          />
+          <div
+            className="text-center ml-5 text-4xl font-bold lg:text-5xl text-white"
+            style={{ paddingTop: "370px", position: "relative" }}
+          >
+            Bạn có thắc mắc về việc đón tiếp khách?
             <br />
-            Hãy hỏi ý kiến Chủ nhà siêu cấp.</div>
-          <button className='button hover:bg-gray-600 ml-5'><a className='text-white text-sm' href='https://vi.airbnb.org/help-ukraine?_ga=2.44083812.1163796900.1666590845-867797294.1666072157&_set_bev_on_new_domain=1666336734_MGI5OWIzNTMzNWVj'>Tìm hiểu Thêm</a></button>
+            Hãy hỏi ý kiến Chủ nhà siêu cấp.
+          </div>
+          <button className="button hover:bg-gray-600 ml-5">
+            <a
+              className="text-white text-sm"
+              href="https://vi.airbnb.org/help-ukraine?_ga=2.44083812.1163796900.1666590845-867797294.1666072157&_set_bev_on_new_domain=1666336734_MGI5OWIzNTMzNWVj"
+            >
+              Tìm hiểu Thêm
+            </a>
+          </button>
         </div>
       </div>
       <div>
@@ -196,7 +246,52 @@ export default function BecomeAHost() {
             flexDirection: "row",
           }}
         >
-          <div className="_1tllc1q"><video className="_e2l2kr" autoPlay aria-label="Ba Chủ nhà khác nhau chuẩn bị chỗ ở để đón khách đến. Chủ nhà đầu tiên, một phụ nữ, dọn bánh mì mới nướng ra. Chủ nhà thứ hai, một người đàn ông, viết lời nhắn chào mừng dành cho khách. Chủ nhà thứ ba, một phụ nữ, đặt một bát chanh lên bàn." crossOrigin="anonymous" playsInline preload="none" style={{ objectFit: 'cover' }}><source src="https://a0.muscache.com/v/9a/7a/9a7ad4a1-cfab-5f7d-96e6-fda8abceabe7/9a7ad4a1cfab5f7d96e6fda8abceabe7_4000k_1.mp4?imformat=h265" type="video/mp4; codecs=hevc" /><source src="https://a0.muscache.com/v/9a/7a/9a7ad4a1-cfab-5f7d-96e6-fda8abceabe7/9a7ad4a1cfab5f7d96e6fda8abceabe7_4000k_1.mp4" type="video/mp4" /></video><div className="_tgyx5c" /><div className="_7rkbxz"><button aria-label="Nút: Tạm dừng video giới thiệu của Chủ nhà" type="button" className="_1osbyo4"><span className=" dir dir-ltr"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', height: 16, width: 16, fill: 'white' }}><path d="M13 1v14H9V1zM7 1v14H3V1z" /></svg></span></button></div></div>
+          <div className="_1tllc1q">
+            <video
+              className="_e2l2kr"
+              autoPlay
+              aria-label="Ba Chủ nhà khác nhau chuẩn bị chỗ ở để đón khách đến. Chủ nhà đầu tiên, một phụ nữ, dọn bánh mì mới nướng ra. Chủ nhà thứ hai, một người đàn ông, viết lời nhắn chào mừng dành cho khách. Chủ nhà thứ ba, một phụ nữ, đặt một bát chanh lên bàn."
+              crossOrigin="anonymous"
+              playsInline
+              preload="none"
+              style={{ objectFit: "cover" }}
+            >
+              <source
+                src="https://a0.muscache.com/v/9a/7a/9a7ad4a1-cfab-5f7d-96e6-fda8abceabe7/9a7ad4a1cfab5f7d96e6fda8abceabe7_4000k_1.mp4?imformat=h265"
+                type="video/mp4; codecs=hevc"
+              />
+              <source
+                src="https://a0.muscache.com/v/9a/7a/9a7ad4a1-cfab-5f7d-96e6-fda8abceabe7/9a7ad4a1cfab5f7d96e6fda8abceabe7_4000k_1.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <div className="_tgyx5c" />
+            <div className="_7rkbxz">
+              <button
+                aria-label="Nút: Tạm dừng video giới thiệu của Chủ nhà"
+                type="button"
+                className="_1osbyo4"
+              >
+                <span className=" dir dir-ltr">
+                  <svg
+                    viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    style={{
+                      display: "block",
+                      height: 16,
+                      width: 16,
+                      fill: "white",
+                    }}
+                  >
+                    <path d="M13 1v14H9V1zM7 1v14H3V1z" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
 
           <div style={{ flex: "100%", marginTop: 180 }}>
             <div className="text-center">
@@ -225,7 +320,8 @@ export default function BecomeAHost() {
                   }}
                   role="text"
                 >
-                  Hãy tham gia cùng chúng tôi. Chúng tôi sẽ hỗ trợ bạn hoàn thành
+                  Hãy tham gia cùng chúng tôi. Chúng tôi sẽ hỗ trợ bạn hoàn
+                  thành
                   <br />
                   từng bước của quy trình.
                 </div>
