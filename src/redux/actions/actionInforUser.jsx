@@ -124,15 +124,15 @@ export const searchUsers = (name = "") => {
   };
 };
 
-export const deleteUsers = (id) => {
+export const deleteUsers = (taiKhoan) => {
   return async (dispatch) => {
     try {
-      const res = await userServ.deleteUser(id);
+      const res = await userServ.deleteUser(taiKhoan);
       message.success("Xóa người dùng thành công");
       // sau khi xoa load lai dah sach phim moi
-      // dispatch(getUsers());
+      dispatch(getUsers());
     } catch (err) {
-      // console.log('err: ', err);
+      console.log("err: ", err?.response.data);
     }
   };
 };

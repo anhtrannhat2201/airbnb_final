@@ -29,11 +29,8 @@ export const userServ = {
     let uri = `/api/users/search/${name}`;
     return https.get(uri);
   },
-  // deleteUser: (id) => {
-  //   let uri = `/api/users?id=${id}`
-  //   return https.delete(uri)
-  // },
   deleteUser: (taiKhoan) => {
-    return https.delete(`/api/users?id=${taiKhoan}`);
+    let uri = `/api/users?id=${taiKhoan}`;
+    return https.delete(uri);
   },
 };

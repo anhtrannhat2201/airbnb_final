@@ -87,7 +87,7 @@ function UsersAdmin() {
       title: "Action",
       dataIndex: "id",
       render: (text, user) => {
-        // console.log('user: ', user);
+        console.log("user: ", user);
         return (
           <Fragment>
             <NavLink
@@ -108,7 +108,7 @@ function UsersAdmin() {
                   )
                 ) {
                   // gọi action
-                  dispatch(deleteUsers(user.id));
+                  dispatch(deleteUsers(user?.id));
                 }
               }}
               key={2}
