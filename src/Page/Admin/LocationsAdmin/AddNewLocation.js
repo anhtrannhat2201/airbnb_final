@@ -2,7 +2,7 @@ import { Form, Input } from "antd";
 import React, { useState } from "react";
 import { useFormik } from "formik";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import { postLocationAction } from "../../../redux/actions/actionsLocations";
